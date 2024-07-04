@@ -29,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->SMTPAuth = true;
         $mail->Username = 'prueba@agasit.com'; // Tu usuario SMTP
         $mail->Password = 'Charly2024**..'; // Tu contraseña SMTP
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port = 465; // Puerto SMTP
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Usa TLS
+        $mail->Port = 465; // Puerto ssl
 
         // Configuración del correo
         $mail->setFrom($email, $name);
