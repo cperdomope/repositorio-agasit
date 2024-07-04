@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/agasitco/public_html/proyagasit   # Ruta donde se desplegarán los archivos
-    - /bin/cp -R * $DEPLOYPATH  # Copia todos los archivos al directorio de despliegue
+    - export DEPLOYPATH=/home/agasitco/public_html/proyagasit 
+    - /bin/cp -R images $DEPLOYPATH
