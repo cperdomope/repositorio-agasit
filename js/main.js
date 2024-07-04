@@ -214,10 +214,8 @@ document
     })
       .then((response) => {
         if (response.ok) {
-          // Mostrar mensaje de agradecimiento
-          document.getElementById("thankYouMessage").style.display = "block";
-          // Ocultar el formulario
-          document.getElementById("contactForm").style.display = "none";
+          // Redirigir a la página de agradecimiento
+          window.location.href = "https://agasit.com/gracias.html";
         } else {
           // Mostrar mensaje de error
           document.getElementById("errorMessage").style.display = "block";
