@@ -849,10 +849,19 @@ button.carousel-control-prev,
   height: auto;
 }
 
-/* Recaptcha */
+/* estilos de mensaje de agradecimiento */
+/* Estilos para el mensaje de agradecimiento */
+.thank-you-message {
+  display: none; /* Oculto por defecto */
+  text-align: center;
+  margin-top: 20px;
+  color: #28a745;
+  font-size: 1.2em;
+}
 .error-message {
-  color: red;
-  font-weight: bold; /* Añade negrita */
-  display: none;
-  margin-top: 10px;
+  display: none; /* Oculto por defecto */
+  text-align: center;
+  margin-top: 20px;
+  color: #dc3545;
+  font-size: 1.2em;
 }

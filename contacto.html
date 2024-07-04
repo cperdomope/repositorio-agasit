@@ -107,7 +107,12 @@
                         </div>
                         <p>¡Estamos aquí para ayudarte! Contáctanos a través del formulario o por correo y te
                             responderemos pronto.</p>
-                        <form id="contactForm" method="POST">
+                        <form id="contactForm" action="https://formsubmit.co/perdomocarlos081@gmail.com" method="POST">
+                            <!-- Campos ocultos para configuración de FormSubmit -->
+                            <input type="hidden" name="_next" value="https://tu-dominio.com/gracias.html">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="Nuevo mensaje de contacto">
+
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
@@ -146,8 +151,6 @@
                                 </div>
                                 <div class="col-12 d-flex justify-content-center align-items-center"
                                     style="height: 80px;">
-                                    <!-- Añadir reCAPTCHA -->
-                                    <div data-netlify-recaptcha="true"></div>
                                 </div>
                                 <div class="col-12 d-flex justify-content-center align-items-center">
                                     <button class="btn btn-primary py-3 mb-2" style="width: 400px;" type="submit">Enviar
@@ -158,6 +161,10 @@
                             <div class="error-message" id="captchaError">Por favor, marque el reCAPTCHA para enviar el
                                 mensaje.</div>
                         </form>
+                        <div class="thank-you-message" id="thankYouMessage">¡Gracias por tu mensaje! Nos pondremos en
+                            contacto contigo pronto.</div>
+                        <div class="error-message" id="errorMessage">Hubo un problema al enviar tu mensaje. Inténtalo de
+                            nuevo más tarde.</div>
                     </div>
                 </div>
             </div>
