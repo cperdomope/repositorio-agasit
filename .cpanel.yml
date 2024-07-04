@@ -1,10 +1,3 @@
----
-#---
-#deployment:
-#tasks:
-#   - export DEPLOYPATH=/home/agasitco/public_html
-#    - /bin/cp -R images $DEPLOYPATH
-
 deployment:
   tasks:
     - export DEPLOYPATH=/home/agasitco/public_html
@@ -14,6 +7,15 @@ deployment:
     - mkdir -p $DEPLOYPATH/img
     - mkdir -p $DEPLOYPATH/lib
     - mkdir -p $DEPLOYPATH/scss
+
+    # Eliminar archivos antiguos en el servidor
+    - echo "Eliminando archivos antiguos en el servidor..."
+    - /bin/rm -rf $DEPLOYPATH/css/*
+    - /bin/rm -rf $DEPLOYPATH/img/*
+    - /bin/rm -rf $DEPLOYPATH/lib/*
+    - /bin/rm -rf $DEPLOYPATH/scss/*
+    - /bin/rm -rf $DEPLOYPATH/*.html
+    - /bin/rm -f $DEPLOYPATH/main.js
 
     # Copiar archivos CSS
     - echo "Copiando archivos CSS..."
@@ -39,10 +41,10 @@ deployment:
     - echo "Copiando archivos HTML..."
     - /bin/cp *.html $DEPLOYPATH/
 
-    # Opcional: limpiar la caché del servidor (dependiendo del servidor)
-    - echo "Limpieza de caché del servidor (si aplica)"
-    # - /usr/bin/some-cache-clear-command
-
     # Verificar cambios en el servidor
     - echo "Verificación de archivos copiados"
     - ls -l $DEPLOYPATH
+
+    # Opcional: limpiar la caché del servidor (si es aplicable)
+    - echo "Limpieza de caché del servidor (si aplica)"
+    # - /usr/bin/some-cache-clear-command
