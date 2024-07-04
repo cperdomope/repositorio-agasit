@@ -682,16 +682,24 @@ button.carousel-control-prev,
   border: 0;
 }
 
-/* Ajustes adicionales según necesidades específicas */
-/* Leer mas */
 .service-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   text-align: justify;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  height: 4.5em; /* Altura para aproximadamente tres líneas */
+  max-height: 4.5em; /* Altura para aproximadamente tres líneas */
+  line-height: 1.5em; /* Ajusta según la altura de línea deseada */
+  position: relative;
+}
+
+.service-text::after {
+  content: "..."; /* Añade puntos suspensivos */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-left: 1em;
+  background: linear-gradient(to left, white, transparent);
 }
 
 .more-text {
