@@ -2,62 +2,56 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Requiere los archivos de PHPMailer
+// Cargar las clases de PHPMailer
 require 'path/to/PHPMailer/src/Exception.php';
 require 'path/to/PHPMailer/src/PHPMailer.php';
 require 'path/to/PHPMailer/src/SMTP.php';
 
-// Verifica si la solicitud es POST
+// Recibir datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING);
-    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
-    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $subject = htmlspecialchars($_POST['subject']);
+    $message = htmlspecialchars($_POST['message']);
 
-    // Configura el correo electrónico destinatario y el asunto
-    $to = 'perdomocarlos081@gmail.com';
-    $email_subject = "Nuevo mensaje de contacto: $subject";
-
-    // Instancia PHPMailer
+    // Configuración de PHPMailer
     $mail = new PHPMailer(true);
 
     try {
-        // Configuración del servidor SMTP
+        // Configurar servidor SMTP
         $mail->isSMTP();
-        $mail->Host = 'mail.agasit.com'; // Cambia a tu servidor SMTP
+        $mail->Host = 'mail.agasit.com';  // Servidor SMTP
         $mail->SMTPAuth = true;
-        $mail->Username = 'prueba@agasit.com'; // Tu usuario SMTP
-        $mail->Password = 'Charly2024**..'; // Tu contraseña SMTP
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Usa TLS
-        $mail->Port = 465; // Puerto ssl
+        $mail->Username = 'prueba@agasit.com'; // Tu correo electrónico
+        $mail->Password = 'Charly2024**..'; // Tu contraseña de correo
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Encriptación SSL/TLS
+        $mail->Port = 465; // Puerto SMTP
 
-        // Configuración del correo
+        // Configurar correo
         $mail->setFrom($email, $name);
-        $mail->addAddress($to);
-        $mail->Subject = $email_subject;
-        $mail->Body = "Nombre: $name\n".
-                      "Email: $email\n".
-                      "Teléfono: $phone\n".
-                      "Asunto: $subject\n\n".
-                      "Mensaje:\n$message";
-        $mail->AltBody = "Nombre: $name\n".
-                         "Email: $email\n".
-                         "Teléfono: $phone\n".
-                         "Asunto: $subject\n\n".
-                         "Mensaje:\n$message";
+        $mail->addAddress('perdomocarlos081@gmail.com'); // Reemplaza con tu dirección de correo
 
-        // Envía el correo
+        // Contenido del correo
+        $mail->isHTML(true); // Establecer el formato del correo a HTML
+        $mail->Subject = "Nuevo mensaje de contacto: $subject";
+        $mail->Body    = "Has recibido un nuevo mensaje de contacto.<br><br>".
+                         "<b>Nombre:</b> $name<br>".
+                         "<b>Email:</b> $email<br>".
+                         "<b>Teléfono:</b> $phone<br>".
+                         "<b>Asunto:</b> $subject<br><br>".
+                         "<b>Mensaje:</b><br>$message";
+
+        // Enviar correo
         $mail->send();
         echo json_encode(['status' => 'success', 'message' => 'Correo enviado con éxito']);
     } catch (Exception $e) {
-        // Error al enviar el correo
-        error_log("Error al enviar el correo: " . $mail->ErrorInfo);
-        echo json_encode(['status' => 'error', 'message' => 'No se pudo enviar el correo']);
+        echo json_encode(['status' => 'error', 'message' => 'No se pudo enviar el correo. Error: ' . $mail->ErrorInfo]);
     }
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
 }
 ?>
+
 
 
