@@ -107,11 +107,9 @@
                         </div>
                         <p>¡Estamos aquí para ayudarte! Contáctanos a través del formulario o por correo y te
                             responderemos pronto.</p>
-                        <form id="contactForm" action="PHPMailer/send_mail.php" method="POST">
-                            <!-- Campos ocultos para configuración de FormSubmit -->
-                            <input type="hidden" name="_next" value="https://agasit.com/gracias.html">
-                            <input type="hidden" name="_captcha" value="false">
+                        <form id="contactForm" action="https://formsubmit.co/perdomocarlos081@gmail.com" method="POST">
                             <input type="hidden" name="_subject" value="Nuevo mensaje de contacto">
+                            <input type="hidden" name="_next" value="https://agasit.com/gracias.html">
 
                             <div class="row g-3">
                                 <div class="col-md-6">
@@ -155,6 +153,7 @@
                                 </div>
                             </div>
                         </form>
+
                         <!-- Mensaje de error -->
                         <div id="errorMessage" style="display: none;">
                             <p>Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.</p>

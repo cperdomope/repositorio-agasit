@@ -195,33 +195,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevenir el envío tradicional del formulario
-
-    // Obtener los datos del formulario
-    const formData = new FormData(this);
-
-    // Enviar los datos a tu script PHP
-    fetch(this.action, {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "success") {
-          // Redirigir a la página de agradecimiento
-          window.location.href = "https://agasit.com/gracias.html";
-        } else {
-          // Mostrar mensaje de error
-          alert(data.message);
-        }
-      })
-      .catch((error) => {
-        console.error("Error al enviar el formulario:", error);
-        alert(
-          "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo."
-        );
-      });
-  });
