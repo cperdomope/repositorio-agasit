@@ -195,22 +195,56 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-document.addEventListener("DOMContentLoaded", function () {
-  // Captura el formulario y el mensaje de error
-  const form = document.getElementById("contactForm");
-  const captchaError = document.getElementById("captchaError");
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Captura el formulario y el mensaje de error
+//   const form = document.getElementById("contactForm");
+//   const captchaError = document.getElementById("captchaError");
 
-  // Añade un evento 'submit' al formulario
-  form.addEventListener("submit", function (event) {
-    // Verifica si el reCAPTCHA está marcado
-    const response = grecaptcha.getResponse();
-    if (response.length === 0) {
-      // Si no está marcado, muestra el mensaje de error y previene el envío del formulario
-      captchaError.style.display = "block";
-      event.preventDefault();
-    } else {
-      // Si está marcado, oculta el mensaje de error
-      captchaError.style.display = "none";
-    }
+//   // Añade un evento 'submit' al formulario
+//   form.addEventListener("submit", function (event) {
+//     // Verifica si el reCAPTCHA está marcado
+//     const response = grecaptcha.getResponse();
+//     if (response.length === 0) {
+//       // Si no está marcado, muestra el mensaje de error y previene el envío del formulario
+//       captchaError.style.display = "block";
+//       event.preventDefault();
+//     } else {
+//       // Si está marcado, oculta el mensaje de error
+//       captchaError.style.display = "none";
+//     }
+//   });
+// });
+// Función para manejar el envío del formulario
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevenir el envío tradicional del formulario
+
+    // Obtener los datos del formulario
+    const formData = new FormData(this);
+
+    // Enviar los datos a FormSubmit
+    fetch("https://formsubmit.co/perdomocarlos081@gmail.com", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Mostrar mensaje de agradecimiento
+          document.getElementById("thankYouMessage").style.display = "block";
+          // Ocultar el formulario
+          document.getElementById("contactForm").style.display = "none";
+        } else {
+          // Mostrar mensaje de error
+          document.getElementById("errorMessage").style.display = "block";
+        }
+      })
+      .catch((error) => {
+        console.error("Error al enviar el formulario:", error);
+        // Mostrar mensaje de error
+        document.getElementById("errorMessage").style.display = "block";
+      });
   });
-});
