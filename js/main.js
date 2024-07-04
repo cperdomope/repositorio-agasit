@@ -230,3 +230,11 @@ document
         document.getElementById("errorMessage").style.display = "block";
       });
   });
+fetch(this.action, {
+  method: "POST",
+  body: formData,
+  headers: {
+    Accept: "application/json",
+  },
+  mode: "no-cors", // Opcional, si no necesitas acceso al contenido de la respuesta
+});
