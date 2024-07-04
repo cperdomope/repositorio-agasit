@@ -108,8 +108,10 @@
                         <p>¡Estamos aquí para ayudarte! Contáctanos a través del formulario o por correo y te
                             responderemos pronto.</p>
                         <form id="contactForm" action="https://formsubmit.co/perdomocarlos081@gmail.com" method="POST">
-                            <input type="hidden" name="_subject" value="Nuevo mensaje de contacto">
+                            <!-- Campos ocultos para configuración de FormSubmit -->
                             <input type="hidden" name="_next" value="https://agasit.com/gracias.html">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="Nuevo mensaje de contacto">
 
                             <div class="row g-3">
                                 <div class="col-md-6">
@@ -146,6 +148,9 @@
                                             id="message" name="message" style="height: 100px" required></textarea>
                                         <label for="message">Mensaje</label>
                                     </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center align-items-center"
+                                    style="height: 80px;">
                                 </div>
                                 <div class="col-12 d-flex justify-content-center align-items-center">
                                     <button class="btn btn-primary py-3 mb-2" style="width: 400px;" type="submit">Enviar
