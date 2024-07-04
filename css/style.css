@@ -3,9 +3,7 @@
   overflow: visible; /* Permite que el logo sobresalga */
 }
 
-/* Estilo del logo */
-.navbar-brand .logo {
-  height: 300px; /* Ajusta la altura según sea necesario */
+Estilo del logo .navbar-brand .logo {
   max-height: none; /* Elimina cualquier límite máximo de altura */
 }
 /* ajustar el logo a cualquier pantalla */
@@ -681,7 +679,7 @@ button.carousel-control-prev,
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-/* boton leer mas... */
+/* boton leer */
 .service-text {
   display: flex;
   flex-direction: column;
