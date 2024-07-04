@@ -1,0 +1,858 @@
+/* Estilos del logo de lapágina */
+.navbar-brand {
+  overflow: visible; /* Permite que el logo sobresalga */
+}
+
+/* Estilo del logo */
+.navbar-brand .logo {
+  height: 300px; /* Ajusta la altura según sea necesario */
+  max-height: none; /* Elimina cualquier límite máximo de altura */
+}
+/* ajustar el logo a cualquier pantalla */
+@media (max-width: 768px) {
+  .navbar-brand .logo {
+    height: 250px; /* Tamaño del logo para pantallas más pequeñas */
+  }
+}
+
+/* Estilo base para los enlaces del menú */
+.navbar-nav .nav-link {
+  color: #000; /* Color base del texto del menú */
+  position: relative; /* Para posicionar la marca debajo del texto */
+  transition: color 0.3s ease; /* Transición de color suave */
+  padding-bottom: 8px; /* Espacio adicional debajo del texto para la línea */
+}
+
+/* Estilos para el botón del menú en dispositivos móviles */
+.navbar-toggler {
+  border: 1px solid #ccc; /* Cambia el color del borde según sea necesario */
+  padding: 0.5rem; /* Ajusta el relleno para darle tamaño al botón */
+  background-color: #ffffff; /* Fondo del botón */
+}
+
+@media (max-width: 768px) {
+  .navbar-toggler {
+    padding: 0.75rem; /* Aumenta el relleno para hacer el botón más grande */
+    font-size: 1.25rem; /* Aumenta el tamaño de la fuente si el botón tiene texto */
+  }
+
+  .navbar-toggler-icon {
+    width: 1.5rem; /* Aumenta el tamaño del ícono */
+    height: 1rem; /* Aumenta la altura del ícono */
+  }
+}
+
+/* Marca (línea debajo del texto) para el enlace activo */
+.navbar-nav .nav-link::after {
+  content: ""; /* Contenido vacío para la marca */
+  display: block; /* Mostrar como bloque para ocupar el ancho */
+  width: 0; /* Ancho inicial de la línea */
+  height: 2px; /* Altura de la línea */
+  background-color: #0c1a96; /* Color de la línea */
+  position: absolute; /* Posición absoluta para estar debajo del texto */
+  bottom: 10px; /* Colocar justo debajo del texto */
+  left: 0; /* Alinear con el borde izquierdo */
+  transition: width 0.3s ease; /* Transición suave para el ancho */
+}
+
+/* Anima la línea cuando se hace hover */
+.navbar-nav .nav-link:hover::after {
+  width: 100%; /* Ancho completo al hacer hover */
+}
+
+/* Ajusta el color del texto cuando el enlace está activo */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover {
+  color: #0c1a96 !important; /* Color diferente para el texto activo */
+  font-weight: bold !important; /* Hace el texto en negrita */
+}
+/* Ajusta la línea cuando el enlace está activo */
+.navbar-nav .nav-link.active::after {
+  width: 100%; /* Ancho completo para el enlace activo */
+}
+
+/* Estilo para ajustar el logo en dispositivos móviles */
+@media (max-width: 576px) {
+  .navbar-brand img {
+    height: 40px; /* Ajusta según sea necesario */
+  }
+}
+
+/* Alinear los enlaces de la navbar en dispositivos móviles */
+.navbar-nav .nav-item {
+  text-align: center;
+}
+
+/* Estilo para mostrar iconos sociales en la navbar colapsada */
+@media (max-width: 992px) {
+  .navbar-collapse .d-lg-flex {
+    display: flex !important;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .navbar-collapse .btn {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Botón de whatsapp */
+.float {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-color: #25d366;
+  bottom: 110px;
+  right: 2rem;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 999;
+}
+.fa-whatsapp {
+  font-size: 50px;
+}
+.float:hover {
+  background-color: #31f077;
+}
+
+/* Resposive botón whatsapp */
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .float {
+    width: 50px; /* Tamaño ajustado para tabletas */
+    height: 50px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .float {
+    font-size: 20px; /* Tamaño del ícono ajustado */
+  }
+}
+
+/* Responsividad para pantallas muy pequeñas */
+@media (max-width: 576px) {
+  .float {
+    width: 40px; /* Tamaño reducido para móviles */
+    height: 40px;
+    bottom: 5rem;
+    right: 1rem;
+  }
+
+  .float {
+    font-size: 18px; /* Tamaño del ícono reducido */
+  }
+}
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .fa-whatsapp {
+    width: 50px; /* Tamaño ajustado para tabletas */
+    height: 50px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .fa-whatsapp {
+    font-size: 20px; /* Tamaño del ícono ajustado */
+  }
+}
+
+/* Responsividad para pantallas muy pequeñas */
+@media (max-width: 576px) {
+  .fa-whatsapp {
+    width: 40px; /* Tamaño reducido para móviles */
+    height: 40px;
+    bottom: 5rem;
+    right: 1rem;
+  }
+
+  .fa-whatsapp {
+    font-size: 40px; /* Tamaño del ícono reducido */
+  }
+}
+
+:root {
+  --primary: #0a0eee;
+  --secondary: #9b9b9b;
+  --light: #f5f5f5;
+  --dark: #161616;
+}
+
+.fw-medium {
+  font-weight: 500 !important;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+}
+
+.fw-black {
+  font-weight: 900 !important;
+}
+
+/* .back-to-top {
+  position: fixed;
+  display: none;
+  right: 45px;
+  bottom: 45px;
+  z-index: 99;
+} */
+
+/*** Spinner ***/
+#spinner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
+  z-index: 99999;
+}
+
+#spinner.show {
+  transition: opacity 0.5s ease-out, visibility 0s linear 0s;
+  visibility: visible;
+  opacity: 1;
+}
+
+/*** Button ***/
+.btn {
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.btn.btn-primary {
+  color: #ffffff;
+}
+
+.btn-square {
+  width: 38px;
+  height: 38px;
+}
+
+.btn-sm-square {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-lg-square {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+/*** Navbar ***/
+.navbar.sticky-top {
+  top: -100px;
+  transition: 0.8s;
+}
+
+.navbar .navbar-brand {
+  height: 75px;
+}
+
+.navbar .navbar-nav .nav-link {
+  margin-right: 30px;
+  padding: 25px 0;
+  color: var(--dark);
+  font-weight: 500;
+  outline: none;
+}
+
+/* .navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+  color: var(--dark);
+} */
+
+@media (max-width: 768px) {
+  .navbar .navbar-nav .nav-link {
+    margin-right: 0;
+    padding: 10px 0;
+  }
+
+  .navbar .navbar-nav {
+    border-top: 1px solid #eeeeee;
+  }
+}
+/* color al pasar el mouse sobre los iconos de las redes sociales */
+
+.navbar .btn:hover {
+  color: #f5f4f7 !important;
+  background: var(--primary) !important;
+}
+
+/*** Header ***/
+.header-carousel .carousel-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  background: rgba(22, 22, 22, 0.7);
+}
+
+@media (max-width: 768px) {
+  .header-carousel .owl-carousel-item {
+    position: relative;
+    min-height: 500px;
+  }
+
+  .header-carousel .owl-carousel-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .header-carousel .owl-carousel-item h5,
+  .header-carousel .owl-carousel-item p {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+
+  .header-carousel .owl-carousel-item h1 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+.header-carousel .owl-nav {
+  position: absolute;
+  width: 200px;
+  height: 45px;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 45px;
+  font-size: 22px;
+  transition: 0.5s;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.header-carousel .owl-dots {
+  position: absolute;
+  height: 45px;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-carousel .owl-dot {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+  transition: 0.5s;
+}
+
+.header-carousel .owl-dot::after {
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 5px;
+  top: 4px;
+  left: 4px;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.header-carousel .owl-dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.page-header {
+  background: linear-gradient(rgba(22, 22, 22, 0.1), rgba(12, 26, 150, 0.7)),
+    url(../img/carousel-4.jpg) center center no-repeat;
+  background-size: cover;
+}
+.page-header1 {
+  background: linear-gradient(rgba(22, 22, 22, 0.1), rgba(12, 26, 150, 0.7)),
+    url(../img/carousel-2.jpg) center center no-repeat;
+  background-size: cover;
+}
+.page-header2 {
+  background: linear-gradient(rgba(22, 22, 22, 0.1), rgba(12, 26, 150, 0.7)),
+    url(../img/pag-servicios.png) center center no-repeat;
+  background-size: cover;
+}
+.page-header3 {
+  background: linear-gradient(rgba(22, 22, 22, 0.1), rgba(12, 26, 150, 0.7)),
+    url(../img/pag-proyectos.jpg) center center no-repeat;
+  background-size: cover;
+}
+.page-header4 {
+  background: linear-gradient(rgba(22, 22, 22, 0.1), rgba(12, 26, 150, 0.7)),
+    url(../img/pag-contacto.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: var(--light);
+}
+
+/*** css botones de leer mas.. de la pagina servicios ***/
+.service-row {
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+}
+
+.service-item {
+  border-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.service-item .btn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  background: var(--primary);
+  border-radius: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.service-item:hover .btn {
+  width: 140px;
+}
+
+/* Estilos para el footer */
+.footer {
+  background-color: #343a40; /* Color de fondo oscuro */
+  color: #ced4da; /* Color de texto secundario */
+  padding-top: 40px; /* Espaciado superior */
+  padding-bottom: 40px; /* Espaciado inferior */
+}
+
+.footer h5 {
+  color: #fff; /* Color de título */
+  font-size: 1.2rem; /* Tamaño de fuente del título */
+}
+
+.footer p {
+  margin-bottom: 5px; /* Espaciado inferior para párrafos */
+}
+
+/* Estilos para los botones tipo enlace dentro del footer */
+.footer .btn-link {
+  display: block; /* Hacer que los botones sean elementos de bloque */
+  margin-bottom: 5px; /* Espaciado inferior entre botones */
+  padding: 0; /* Eliminar relleno interior */
+  text-align: left; /* Alinear el texto a la izquierda */
+  color: #ced4da; /* Color de texto */
+  font-weight: normal; /* Peso de la fuente normal */
+  text-transform: capitalize; /* Convertir texto en mayúsculas */
+  transition: 0.3s; /* Transición suave */
+  border: none; /* Eliminar borde */
+  background: none; /* Fondo transparente */
+}
+
+.footer .btn-link::before {
+  font-family: "Font Awesome 5 Free"; /* Familia de fuentes Font Awesome */
+  font-weight: 900; /* Peso de la fuente negrita */
+  margin-right: 10px; /* Margen derecho */
+}
+
+/* Estilos adicionales para hacer el footer responsive */
+@media (max-width: 992px) {
+  .footer {
+    text-align: center; /* Alinear el contenido al centro en pantallas pequeñas */
+  }
+
+  .footer .btn-link {
+    text-align: center; /* Alinear el texto de los botones al centro en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding-top: 20px; /* Espaciado superior reducido en pantallas muy pequeñas */
+    padding-bottom: 20px; /* Espaciado inferior reducido en pantallas muy pequeñas */
+  }
+}
+/* Estilos para los botones de redes sociales dentro del footer */
+.footer .d-flex {
+  justify-content: center; /* Centrar los botones horizontalmente */
+}
+@media (min-width: 992px) {
+  /* Media query para pantallas de laptop (992px y superior) */
+  .footer .d-flex {
+    justify-content: flex-start; /* Alinear los botones a la izquierda en pantallas de laptop */
+  }
+}
+
+.footer .btn-square {
+  width: 40px; /* Ancho fijo para los botones cuadrados */
+  height: 40px; /* Altura fija para los botones cuadrados */
+  font-size: 20px; /* Tamaño de fuente para los íconos */
+  line-height: 40px; /* Alineación vertical del texto */
+  margin-bottom: 10px; /* Espaciado inferior entre botones */
+}
+
+@media (max-width: 768px) {
+  .footer .btn-square {
+    width: 30px; /* Reducir el ancho en pantallas más pequeñas */
+    height: 30px; /* Reducir la altura en pantallas más pequeñas */
+    font-size: 16px; /* Reducir el tamaño de fuente en pantallas más pequeñas */
+    line-height: 30px; /* Alinear verticalmente el texto en pantallas más pequeñas */
+  }
+}
+
+/* codigo nuevo  */
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(245, 245, 245);
+  margin: 1rem;
+  padding: 10px, 10px;
+}
+
+h2.texto-ese {
+  font-size: 2.5rem;
+  color: #0c1a96;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Contenedor principal */
+.menu.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: rgba(245, 245, 245);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Estilos para los botones de filtro */
+.botones-elementos {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.botones-elementos button {
+  font-size: 1rem;
+  color: #f1ecec;
+  background-color: #01020a;
+  border: none;
+  padding: 10px 20px;
+  margin: 1px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+.botones-elementos button:hover {
+  background-color: #0c1a96;
+}
+
+.botones-elementos .active {
+  background-color: #25767c;
+}
+
+/* Estilos para los elementos */
+.elementos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.elemento {
+  width: calc(33.333% - 20px);
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, opacity 0.3s;
+  overflow: hidden;
+  display: none; /* Oculto por defecto */
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.elemento.show {
+  display: flex;
+}
+
+.elemento img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.elemento h2 {
+  font-size: 1.5rem;
+  color: #0c1a96;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.elemento p {
+  font-size: 1rem;
+  color: #555;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+/* responsive de la página Proyectos para todas las imágenes */
+@media (max-width: 768px) {
+  .elemento {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .elemento {
+    width: 100%;
+  }
+}
+
+/* Código nuevo imagenes del menú Proyectos */
+button.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+button.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background-color: rgba(0, 0, 0, 0.5); Color de fondo semi-transparente */
+  color: white; /* Color de texto */
+  border: none; /* Sin borde */
+  border-radius: 0; /* Borde sin redondeo */
+  padding: 10px 15px; /* Espaciado interno */
+  transition: background-color 0.3s ease; /*Transición suave del color de fondo */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #0c1a96; /* Fondo transparente */
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Ajustes adicionales según necesidades específicas */
+/* Leer mas */
+.service-text {
+  text-align: justify;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  height: 4.5em; /* Altura para aproximadamente tres líneas */
+}
+
+.more-text {
+  text-align: justify;
+}
+/* Página de formulario de contacto */
+.container-fluid {
+  padding: 2rem 0;
+}
+
+.contact-form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.form-floating input,
+.form-floating textarea {
+  border-radius: 0.25rem;
+  padding: 1rem;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+}
+
+.form-floating label {
+  padding: 0 0.5rem;
+  background-color: white;
+  top: -0.75rem;
+  left: 1rem;
+  font-size: 1rem;
+  color: #495057;
+}
+
+.label-mensaje {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.btn-primary {
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  padding: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #081178;
+}
+
+@media (max-width: 768px) {
+  .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  .form-floating {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-floating input,
+  .form-floating textarea {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .form-floating label {
+    font-size: 0.875rem;
+  }
+
+  .btn-primary {
+    font-size: 1rem;
+  }
+}
+/* Código responsive del boton ir arriba... */
+.back-to-top {
+  position: fixed;
+  bottom: 45px;
+  right: 2rem;
+  width: 50px; /* Tamaño base del botón */
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0c1a96;
+  border-radius: 50%;
+  z-index: 1000;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top i {
+  font-size: 24px;
+  color: #fff;
+}
+
+/* Hover effects */
+.back-to-top:hover {
+  background-color: #081178;
+  transform: translateY(-5px);
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .back-to-top {
+    width: 50px; /* Tamaño ajustado para tabletas */
+    height: 50px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .back-to-top i {
+    font-size: 20px; /* Tamaño del ícono ajustado */
+  }
+}
+
+/* Responsividad para pantallas muy pequeñas */
+@media (max-width: 576px) {
+  .back-to-top {
+    width: 40px; /* Tamaño reducido para móviles */
+    height: 40px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .back-to-top i {
+    font-size: 18px; /* Tamaño del ícono reducido */
+  }
+}
+/* Galería de imágenes de la página servicios de las marcas */
+.image-gallery-container {
+  text-align: center;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Esto permite que las imágenes se envuelvan si la pantalla es pequeña */
+  gap: 20px; /* Espacio entre las imágenes */
+}
+
+.image-item {
+  display: inline-block;
+}
+
+.image-item img {
+  max-width: 150px; /* Ajusta el tamaño de las imágenes según sea necesario */
+  height: auto;
+}
+
+/* Recaptcha */
+.error-message {
+  color: red;
+  font-weight: bold; /* Añade negrita */
+  display: none;
+  margin-top: 10px;
+}
