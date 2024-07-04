@@ -1,3 +1,31 @@
+/* Estilos básicos para el logo */
+.logo {
+  max-width: 100%; /* Permite que el logo no exceda el tamaño del contenedor */
+  height: auto; /* Mantiene la proporción del logo */
+  display: block; /* Elimina el espacio inferior */
+}
+
+/* Ajustes para tamaños de pantalla pequeños */
+@media (max-width: 576px) {
+  .logo {
+    width: 50px; /* Ajusta el tamaño del logo para pantallas pequeñas */
+  }
+}
+
+/* Ajustes para tamaños de pantalla medianos */
+@media (min-width: 577px) and (max-width: 768px) {
+  .logo {
+    width: 75px; /* Tamaño intermedio para pantallas medianas */
+  }
+}
+
+/* Ajustes para tamaños de pantalla grandes */
+@media (min-width: 769px) {
+  .logo {
+    width: 100px; /* Tamaño más grande para pantallas más grandes */
+  }
+}
+
 /* Estilos del logo de lapágina */
 .navbar-brand {
   overflow: visible; /* Permite que el logo sobresalga */
