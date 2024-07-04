@@ -224,7 +224,7 @@ document
     const formData = new FormData(this);
 
     // Enviar los datos a FormSubmit
-    fetch("https://formsubmit.co/perdomocarlos081@gmail.com", {
+    fetch("https://formsubmit.co/0a3cb0ca98ec1494a430e846d8ea92 3e", {
       method: "POST",
       body: formData,
       headers: {
