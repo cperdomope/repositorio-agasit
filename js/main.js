@@ -196,40 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // Función para manejar el envío del formulario
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevenir el envío tradicional del formulario
-
-    // Obtener los datos del formulario
-    const formData = new FormData(this);
-
-    // Enviar los datos a FormSubmit
-    fetch(this.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Redirigir a la página de agradecimiento
-          window.location.href = "https://agasit.com/index.html";
-        } else {
-          // Mostrar mensaje de error
-          document.getElementById("errorMessage").style.display = "block";
-          return response.json().then((data) => {
-            console.error("Error en la respuesta del servidor:", data);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error al enviar el formulario:", error);
-        // Mostrar mensaje de error
-        document.getElementById("errorMessage").style.display = "block";
-      });
-  });
 fetch(this.action, {
   method: "POST",
   body: formData,
