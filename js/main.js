@@ -195,25 +195,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Captura el formulario y el mensaje de error
-//   const form = document.getElementById("contactForm");
-//   const captchaError = document.getElementById("captchaError");
+document.addEventListener("DOMContentLoaded", function () {
+  // Captura el formulario y el mensaje de error
+  const form = document.getElementById("contactForm");
+  const captchaError = document.getElementById("captchaError");
 
-//   // Añade un evento 'submit' al formulario
-//   form.addEventListener("submit", function (event) {
-//     // Verifica si el reCAPTCHA está marcado
-//     const response = grecaptcha.getResponse();
-//     if (response.length === 0) {
-//       // Si no está marcado, muestra el mensaje de error y previene el envío del formulario
-//       captchaError.style.display = "block";
-//       event.preventDefault();
-//     } else {
-//       // Si está marcado, oculta el mensaje de error
-//       captchaError.style.display = "none";
-//     }
-//   });
-// });
+  // Añade un evento 'submit' al formulario
+  form.addEventListener("submit", function (event) {
+    // Verifica si el reCAPTCHA está marcado
+    const response = grecaptcha.getResponse();
+    if (response.length === 0) {
+      // Si no está marcado, muestra el mensaje de error y previene el envío del formulario
+      captchaError.style.display = "block";
+      event.preventDefault();
+    } else {
+      // Si está marcado, oculta el mensaje de error
+      captchaError.style.display = "none";
+    }
+  });
+});
 // Función para manejar el envío del formulario
 document
   .getElementById("contactForm")
