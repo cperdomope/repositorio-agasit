@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/agasitco/public_html/proyagasit 
+    - export DEPLOYPATH=/home/agasitco/public_html/proyagasit
     - /bin/cp -R images $DEPLOYPATH
