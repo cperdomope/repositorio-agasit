@@ -1,10 +1,11 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $subject = htmlspecialchars($_POST['subject']);
-    $message = htmlspecialchars($_POST['message']);
+    // Obtener y sanitizar los datos del formulario
+    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING);
+    $subject = filter_var($_POST['subject'], FILTER_SANITIZE_STRING);
+    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
 
     // Dirección de correo a la que se enviará el mensaje
     $to = 'perdomocarlos081@gmail.com'; // Reemplaza con tu dirección de correo
