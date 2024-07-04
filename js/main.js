@@ -215,7 +215,7 @@ document
       .then((response) => {
         if (response.ok) {
           // Redirigir a la página de agradecimiento
-          window.location.href = "https://agasit.com/gracias.html";
+          window.location.href = "https://agasit.com/index.html";
         } else {
           // Mostrar mensaje de error
           document.getElementById("errorMessage").style.display = "block";
