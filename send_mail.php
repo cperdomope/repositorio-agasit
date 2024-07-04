@@ -29,9 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mail($to, $email_subject, $email_body, $headers)) {
         echo json_encode(['status' => 'success', 'message' => 'Correo enviado con éxito']);
     } else {
+        // Agregar la línea de error_log para registrar el fallo
+        error_log("Error al enviar el correo a " . $to);
+
+        // Enviar una respuesta de error en formato JSON
         echo json_encode(['status' => 'error', 'message' => 'No se pudo enviar el correo']);
     }
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
 }
 ?>
+
