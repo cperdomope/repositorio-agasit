@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Configurar correo
         $mail->setFrom($email, $name);
-        $mail->addAddress('perdomocarlos081@gmail.com'); // Reemplaza con tu dirección de correo
+        $mail->addAddress('prueba@agasit.com'); // Reemplaza con tu dirección de correo
 
         // Contenido del correo
         $mail->isHTML(true); // Establecer el formato del correo a HTML
