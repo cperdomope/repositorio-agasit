@@ -219,6 +219,9 @@ document
         } else {
           // Mostrar mensaje de error
           document.getElementById("errorMessage").style.display = "block";
+          return response.json().then((data) => {
+            console.error("Error en la respuesta del servidor:", data);
+          });
         }
       })
       .catch((error) => {
