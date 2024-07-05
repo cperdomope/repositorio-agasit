@@ -2,49 +2,30 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/agasitco/public_html
 
-    # Crear directorios si no existen
-    - mkdir -p $DEPLOYPATH/css
-    - mkdir -p $DEPLOYPATH/img
-    - mkdir -p $DEPLOYPATH/lib
-    - mkdir -p $DEPLOYPATH/scss
+    # Sincronizar archivos CSS
+    - echo "Sincronizando archivos CSS..."
+    - rsync -avz css/ $DEPLOYPATH/css/
 
-    # Eliminar archivos antiguos en el servidor
-    - echo "Eliminando archivos antiguos en el servidor..."
-    - /bin/rm -rf $DEPLOYPATH/css/*
-    - /bin/rm -rf $DEPLOYPATH/img/*
-    - /bin/rm -rf $DEPLOYPATH/lib/*
-    - /bin/rm -rf $DEPLOYPATH/scss/*
-    - /bin/rm -rf $DEPLOYPATH/*.html
-    - /bin/rm -f $DEPLOYPATH/main.js
+    # Sincronizar archivos de imágenes
+    - echo "Sincronizando archivos de imágenes..."
+    - rsync -avz img/ $DEPLOYPATH/img/
 
-    # Copiar archivos CSS
-    - echo "Copiando archivos CSS..."
-    - /bin/cp -R css/* $DEPLOYPATH/css/
+    # Sincronizar archivo JavaScript principal
+    - echo "Sincronizando archivo JavaScript principal..."
+    - rsync -avz main.js $DEPLOYPATH/
 
-    # Copiar archivos de imágenes
-    - echo "Copiando archivos de imágenes..."
-    - /bin/cp -R img/* $DEPLOYPATH/img/
+    # Sincronizar bibliotecas
+    - echo "Sincronizando bibliotecas..."
+    - rsync -avz lib/ $DEPLOYPATH/lib/
 
-    # Copiar archivos JavaScript principal
-    - echo "Copiando archivo JavaScript principal..."
-    - /bin/cp main.js $DEPLOYPATH/
+    # Sincronizar archivos SCSS (si es necesario en el servidor)
+    - echo "Sincronizando archivos SCSS..."
+    - rsync -avz scss/ $DEPLOYPATH/scss/
 
-    # Copiar bibliotecas
-    - echo "Copiando bibliotecas..."
-    - /bin/cp -R lib/* $DEPLOYPATH/lib/
+    # Sincronizar archivos HTML
+    - echo "Sincronizando archivos HTML..."
+    - rsync -avz *.html $DEPLOYPATH/
 
-    # Copiar archivos SCSS (si es necesario en el servidor)
-    - echo "Copiando archivos SCSS..."
-    - /bin/cp -R scss/* $DEPLOYPATH/scss/
-
-    # Copiar archivos HTML
-    - echo "Copiando archivos HTML..."
-    - /bin/cp *.html $DEPLOYPATH/
-
-    # Verificar cambios en el servidor
-    - echo "Verificación de archivos copiados"
+    # Verificación de archivos sincronizados
+    - echo "Verificación de archivos sincronizados"
     - ls -l $DEPLOYPATH
-
-    # Opcional: limpiar la caché del servidor (si es aplicable)
-    - echo "Limpieza de caché del servidor (si aplica)"
-    # - /usr/bin/some-cache-clear-command
