@@ -195,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 document
   .getElementById("contactForm")
   .addEventListener("submit", function (event) {
@@ -214,7 +215,7 @@ document
           // Mostrar mensaje de agradecimiento
           document.getElementById("thankYouMessage").style.display = "block";
           // Opcional: Redirigir a una página de gracias
-          window.location.href = "https://agasit.com/gracias.html";
+          // window.location.href = "https://agasit.com/gracias.html";
         } else {
           // Mostrar mensaje de error
           document.getElementById("errorMessage").style.display = "block";
