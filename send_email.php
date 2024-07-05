@@ -28,13 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port = 465;
 
         // Configuración de los destinatarios
-        $mail->setFrom('prueba@agasit.com', 'Agasit SAS');
-        $mail->addAddress('perdomocarlos081@gmail.com'); // Destinatario principal
-        $mail->addCC('sharonpt2007@gmail.com'); // Destinatario en copia
+        $mail->setFrom('prueba@agasit.com', 'Cliente Agasit SAS');
+        $mail->addAddress('agasitsas@gmail.com'); // Destinatario principal
+        $mail->addCC('perdomocarlos081@gmail.com'); // Destinatario en copia
 
         // Configuración del correo
         $mail->isHTML(true);
-        $mail->Subject = "Nuevo mensaje de contacto: $asunto";
+        $mail->Subject = "Nuevo mensaje de cliente: $asunto";
         $mail->Body    = "
             <h2>Nuevo mensaje de contacto</h2>
             <p><strong>Nombre:</strong> $nombre</p>
