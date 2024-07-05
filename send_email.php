@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Configuración de los destinatarios
         $mail->setFrom('prueba@agasit.com', 'Cliente Agasit SAS');
-        $mail->addAddress('agasitsas@gmail.com'); // Destinatario principal
+        $mail->addAddress('sharonpt2007@gmail.com'); // Destinatario principal
         $mail->addCC('perdomocarlos081@gmail.com'); // Destinatario en copia
 
         // Configuración del correo
