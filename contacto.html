@@ -110,7 +110,6 @@
                         <form id="contactForm" action="https://formsubmit.co/perdomocarlos081@gmail.com" method="POST">
                             <!-- Campos ocultos para configuración de FormSubmit -->
                             <input type="hidden" name="_next" value="https://agasit.com/gracias.html">
-                            <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_subject" value="Nuevo mensaje de contacto">
 
                             <div class="row g-3">
@@ -155,6 +154,16 @@
                                 </div>
                             </div>
                         </form>
+
+                        <!-- Mensaje de error -->
+                        <div id="errorMessage" style="display: none;">
+                            <p>Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.</p>
+                        </div>
+
+                        <!-- Mensaje de agradecimiento -->
+                        <div id="thankYouMessage" style="display: none;">
+                            <p>Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.</p>
+                        </div>
                     </div>
                 </div>
             </div>
