@@ -29,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Configuración de los destinatarios
         $mail->setFrom('prueba@agasit.com', 'Cliente Agasit SAS');
-        $mail->addAddress('sharonpt2007@gmail.com'); // Destinatario principal
-        $mail->addCC('perdomocarlos081@gmail.com'); // Destinatario en copia
+        $mail->addAddress('perdomocarlos081@gmail.com'); // Destinatario principal
+       // $mail->addCC(''); // Destinatario en copia
 
         // Configuración del correo
         $mail->isHTML(true);
