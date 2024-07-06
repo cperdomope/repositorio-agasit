@@ -176,14 +176,6 @@
   font-weight: 900 !important;
 }
 
-/* .back-to-top {
-  position: fixed;
-  display: none;
-  right: 45px;
-  bottom: 45px;
-  z-index: 99;
-} */
-
 /*** Spinner ***/
 #spinner {
   opacity: 0;
@@ -713,11 +705,12 @@ button.carousel-control-prev,
 
 .form-floating label {
   padding: 0 0.5rem;
-  background-color: white;
-  top: -0.75rem;
+  height: 30px;
+  width: 100px;
+  top: -1.7rem;
   left: 1rem;
-  font-size: 1rem;
-  color: #495057;
+  font-size: 1.1rem;
+  color: #ae92ee;
 }
 
 .label-mensaje {
