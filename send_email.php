@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ";
 
         $mail->send();
-        echo '<h3>El mensaje ha sido enviado correctamente, Pronto nos contactaremos contigo!!!.</h3>';
+        echo '<h2>El mensaje ha sido enviado con éxito, gracias por contactarnos, Pronto nos comunicaremos contigo!!!.</h2>';
         echo '<p><a href="https://agasit.com">Volver a la página de inicio</a></p>';
     } catch (Exception $e) {
         echo "Error al enviar el mensaje: {$mail->ErrorInfo}";
