@@ -26,10 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Password = 'Charly2024**..';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
+        // Configurar la codificación del correo a UTF-8
+        $mail->CharSet = 'UTF-8';
 
         // Configuración de los destinatarios
         $mail->setFrom('prueba@agasit.com', 'Cliente Agasit SAS');
-        $mail->addAddress('agasitsas@gmail.com'); // Destinatario principal
+        $mail->addAddress('perdomocarlos081@gmail.com'); // Destinatario principal
        // $mail->addCC(''); // Destinatario en copia
 
         // Configuración del correo
