@@ -109,41 +109,61 @@
                             responderemos pronto.</p>
                         <form id="contactForm" action="send_email.php" method="POST">
                             <div class="row g-3">
+                                <!-- Campo de Nombre -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="name" name="Nombre"
-                                            placeholder="Su nombre" required>
+                                            placeholder="Su nombre" required pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{2,50}$">
                                         <label for="name">Nombre</label>
+                                        <small>Solo letras y espacios, 2-50 caracteres.</small>
                                     </div>
                                 </div>
+
+                                <!-- Campo de Correo Electrónico -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="email" class="form-control" id="email" name="Correo"
                                             placeholder="Su Email" required>
                                         <label for="email">Email</label>
+                                        <small>Introduce un correo electrónico válido.</small>
                                     </div>
                                 </div>
+
+                                <!-- Campo de Teléfono -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="tel" class="form-control" id="phone" name="Teléfono"
-                                            placeholder="Su Teléfono" required>
+                                            placeholder="Su Teléfono" required pattern="^\+?[0-9]{7,15}$">
                                         <label for="phone">Teléfono</label>
+                                        <small>Solo números, con o sin prefijo internacional (+). Longitud 7-15
+                                            dígitos.</small>
                                     </div>
                                 </div>
+
+                                <!-- Campo de Asunto -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="subject" name="Asunto"
-                                            placeholder="Asunto" required>
+                                            placeholder="Asunto" required
+                                            pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9,.!? ]{5,100}$">
                                         <label for="subject">Asunto</label>
+                                        <small>5-100 caracteres, puede incluir letras, números y algunos signos de
+                                            puntuación.</small>
                                     </div>
                                 </div>
+
+                                <!-- Campo de Mensaje -->
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Escriba su mensaje aquí"
-                                            id="message" name="Mensaje" style="height: 100px" required></textarea>
+                                            id="message" name="Mensaje" style="height: 100px" required minlength="10"
+                                            maxlength="2000"></textarea>
                                         <label for="message">Mensaje</label>
+                                        <small>10-2000 caracteres.</small>
                                     </div>
                                 </div>
+
+                                <!-- Botón de Envío -->
                                 <div class="col-12 d-flex justify-content-center align-items-center">
                                     <button class="btn btn-primary py-3 mb-2" style="width: 400px;" type="submit">Enviar
                                         mensaje</button>
