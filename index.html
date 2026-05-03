@@ -3,229 +3,289 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ── SEO básico ───────────────────────────────────────────── -->
+    <title>AGA Soluciones IT | Seguridad Electrónica en Colombia</title>
+    <meta name="description" content="Empresa colombiana especializada en sistemas CCTV, control de acceso peatonal y vehicular, cercas eléctricas y detección de incendios. Diseño, instalación y mantenimiento.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://agasit.com/">
+
+    <!-- ── Open Graph (redes sociales) ──────────────────────────── -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://agasit.com/">
+    <meta property="og:title"       content="AGA Soluciones IT | Seguridad Electrónica Profesional">
+    <meta property="og:description" content="Soluciones de seguridad electrónica de vanguardia: CCTV, control de acceso, cercas eléctricas, alarmas y más. Bogotá, Colombia.">
+    <meta property="og:image"       content="https://agasit.com/img/carousel-1.jpg">
+    <meta property="og:locale"      content="es_CO">
+    <meta property="og:site_name"   content="AGA Soluciones IT">
+
+    <!-- ── Favicon ──────────────────────────────────────────────── -->
     <link rel="icon" type="image/png" href="/img/icon/logo-pestana.png">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
 
-
-    <!-- Google Web Fonts -->
+    <!-- ── Fuentes Google (preconnect antes del stylesheet) ─────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap">
+
+    <!-- ── Iconos (una sola versión de Font Awesome) ────────────── -->
+    <!--
+        ACCIÓN REQUERIDA: Descargar Font Awesome 6.5 localmente:
+        https://fontawesome.com/download → extraer en lib/font-awesome/
+        Luego reemplazar esta línea por:
+        <link href="lib/font-awesome/css/all.min.css" rel="stylesheet">
+    -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
-        rel="stylesheet">
+    <!--
+        ACCIÓN REQUERIDA: Descargar Bootstrap Icons localmente:
+        https://github.com/twbs/icons/releases/tag/v1.4.1
+        → extraer en lib/bootstrap-icons/
+        Luego reemplazar por:
+        <link href="lib/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
+    <!-- ── Librerías locales ─────────────────────────────────────── -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <!-- <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet"> -->
 
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- ── Estilos propios ──────────────────────────────────────── -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <a href="https://api.whatsapp.com/send?phone=573204297664&#038;app=facebook&#038;entry_point=page_cta"
-        target="_blank" class="float">
-        <i class="fa-brands fa-whatsapp"></i>
+    <!-- Skip navigation (accesibilidad: primer elemento del body) -->
+    <a class="visually-hidden-focusable" href="#contenido-principal">Saltar al contenido principal</a>
+
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://api.whatsapp.com/send?phone=573204297664"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="float"
+       aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <!-- Spinner empieza -->
+    <!-- Spinner de carga -->
     <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Cargando...</span>
+         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+         role="status"
+         aria-label="Cargando página">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
         </div>
     </div>
-    <!-- Spinner fin -->
 
-    <!-- Menú empieza -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-        <a href="index" class="navbar-brand d-flex align-items-center">
-            <img src="img/icon/logo-pagina.png" alt="Logo" class="me-2 logo">
+    <!-- ── Menú principal ───────────────────────────────────────── -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5"
+         aria-label="Menú principal">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <img src="img/icon/logo-pagina.png" alt="AGA Soluciones IT" class="me-2 logo" width="160" height="60">
         </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button type="button"
+                class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
+                aria-expanded="false"
+                aria-label="Abrir o cerrar el menú">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-4 py-lg-0">
-                <a href="index" class="nav-item nav-link active">Inicio</a>
-                <a href="acerca-de" class="nav-item nav-link">Acerca de nosotros</a>
-                <a href="servicios" class="nav-item nav-link">Servicios</a>
-                <a href="proyectos" class="nav-item nav-link">Proyectos</a>
-                <a href="contacto" class="nav-item nav-link">Contacto</a>
+                <a href="index.html"     class="nav-item nav-link active" aria-current="page">Inicio</a>
+                <a href="acerca-de.html" class="nav-item nav-link">Acerca de nosotros</a>
+                <a href="servicios.html" class="nav-item nav-link">Servicios</a>
+                <a href="proyectos.html" class="nav-item nav-link">Proyectos</a>
+                <a href="contacto.html"  class="nav-item nav-link">Contacto</a>
             </div>
-            <div class="d-lg-flex d-none align-items-center">
+            <div class="d-lg-flex d-none align-items-center" aria-label="Redes sociales">
                 <a class="btn btn-square rounded-circle bg-light text-primary me-2"
-                    href="https://www.facebook.com/agasitsas" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
+                   href="https://www.facebook.com/agasitsas"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="Facebook de AGA Soluciones IT">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
                 </a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="" aria-label="Twitter">
-                    <i class="fa-brands fa-x-twitter"></i>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="#" aria-label="Twitter / X">
+                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
                 </a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                 </a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-0" href="" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
+                <a class="btn btn-square rounded-circle bg-light text-primary me-0" href="#" aria-label="Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
     </nav>
-    <!-- Menú fin -->
 
+    <!-- ── Contenido principal ──────────────────────────────────── -->
+    <main id="contenido-principal">
 
-    <!-- Carrusel empieza -->
-    <div class="container-fluid p-0 pb-5">
-        <div class="owl-carousel header-carousel position-relative">
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-1.jpg" alt="">
-                <div class="carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-lg-8 text-center">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Seguridad Electrónica
-                                    Profesional para Tu Tranquilidad</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Ofrecemos soluciones de seguridad electrónica de
-                                    vanguardia, diseñadas para proteger lo que más valoras y garantizar tu tranquilidad
-                                    en todo momento.</p>
+        <!-- Carrusel principal -->
+        <section aria-label="Presentación de servicios" class="container-fluid p-0 pb-5">
+            <div class="owl-carousel header-carousel position-relative">
+
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid"
+                         src="img/carousel-1.jpg"
+                         alt="Sistema de seguridad electrónica instalado en edificio comercial"
+                         width="1920" height="700">
+                    <div class="carousel-inner">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-lg-8 text-center">
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">
+                                        Seguridad Electrónica Profesional para Tu Tranquilidad
+                                    </h1>
+                                    <p class="fs-5 text-white mb-4 pb-2">
+                                        Ofrecemos soluciones de seguridad electrónica de vanguardia, diseñadas para
+                                        proteger lo que más valoras y garantizar tu tranquilidad en todo momento.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
-                <div class="carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-lg-8 text-center">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Solución de seguridad
-                                    inteligente para todas las empresas</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Diseñamos, vendemos, instalamos, configuramos y
-                                    ejecutamos rutinas de mantenimiento a sistemas de seguridad electrónica, esto de la
-                                    mano de las mejores marcas de dispositivos, materiales y un equipo humano calificado
-                                    y dispuesto a colaborar.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-3.jpg" alt="">
-                <div class="carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-lg-8 text-center">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Solución innovadora para
-                                    sistemas de seguridad</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Ofrecemos una amplia gama de servicios de
-                                    seguridad electrónica, incluyendo control de acceso peatonal y vehicular, cercas
-                                    eléctricas, sistemas de intrusión y alarmas, detección de incendios, citofonía y
-                                    videocitofonía. También nos especializamos en la integración de sistemas,
-                                    automatización de edificios, mantenimiento eléctrico, y de comunicaciones,
-                                    asegurando un entorno seguro y eficiente.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Carrusel fin -->
 
-    <!-- Footer empieza -->
-    <div class="container-fluid bg-dark text-secondary footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid"
+                         src="img/carousel-2.jpg"
+                         alt="Técnico configurando sistema de control de acceso vehicular"
+                         loading="lazy"
+                         width="1920" height="700">
+                    <div class="carousel-inner">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-lg-8 text-center">
+                                    <h2 class="display-3 text-white animated slideInDown mb-4">
+                                        Solución de seguridad inteligente para todas las empresas
+                                    </h2>
+                                    <p class="fs-5 text-white mb-4 pb-2">
+                                        Diseñamos, vendemos, instalamos, configuramos y ejecutamos rutinas de
+                                        mantenimiento a sistemas de seguridad electrónica, de la mano de las mejores
+                                        marcas y un equipo humano calificado.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid"
+                         src="img/carousel-3.jpg"
+                         alt="Panel de detección de incendios y sistema de alarmas integrado"
+                         loading="lazy"
+                         width="1920" height="700">
+                    <div class="carousel-inner">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-lg-8 text-center">
+                                    <h2 class="display-3 text-white animated slideInDown mb-4">
+                                        Solución innovadora para sistemas de seguridad
+                                    </h2>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">
+                                        Control de acceso peatonal y vehicular, cercas eléctricas, sistemas de
+                                        intrusión y alarmas, detección de incendios, citofonía, automatización de
+                                        edificios, mantenimiento eléctrico y de comunicaciones.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── Footer ───────────────────────────────────────────────── -->
+    <footer class="container-fluid bg-dark text-secondary footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h5 class=" text-light mb-4">Contacto</h5>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>320 429 76 64</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>320 739 03 74</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>agasitsas@gmail.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href=""><i
-                                class="fa-brands fa-x-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2"
-                            href="https://www.facebook.com/agasitsas" target="_blank" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
+                    <h2 class="h5 text-light mb-4">Contacto</h2>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3" aria-hidden="true"></i>320 429 76 64</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3" aria-hidden="true"></i>320 739 03 74</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3" aria-hidden="true"></i>agasitsas@gmail.com</p>
+                    <nav aria-label="Redes sociales AGA" class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="#" aria-label="Twitter / X">
+                            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
                         </a>
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
-                    </div>
+                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2"
+                           href="https://www.facebook.com/agasitsas"
+                           target="_blank" rel="noopener noreferrer"
+                           aria-label="Facebook de AGA Soluciones IT">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="#" aria-label="YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="#" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                    </nav>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Servicios</h5>
-                    <p> Sistema CCTV</p>
-                    <p> Control de acceso peatonal</p>
-                    <p> Control de acceso vehicular</p>
-                    <p> Cercas eléctricas</p>
-                    <p>Intrusión-Alarmas</p>
-                    <p>Detección de incendios</p>
-                    <p>Citofonía y Videocitofonía</p>
-                    <p>Integración de sistemas y automatización de edificios</p>
-                    <p>Mantenimiento correctivo, predictivo y preventivo</p>
-                    <p>Eléctrico</p>
-                    <p>Comunicaciones</p>
-
+                    <h2 class="h5 text-light mb-4">Servicios</h2>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-1">Sistema CCTV</li>
+                        <li class="mb-1">Control de acceso peatonal</li>
+                        <li class="mb-1">Control de acceso vehicular</li>
+                        <li class="mb-1">Cercas eléctricas</li>
+                        <li class="mb-1">Intrusión y alarmas</li>
+                        <li class="mb-1">Detección de incendios</li>
+                        <li class="mb-1">Citofonía y videocitofonía</li>
+                        <li class="mb-1">Integración y automatización</li>
+                        <li class="mb-1">Mantenimiento eléctrico</li>
+                        <li class="mb-1">Comunicaciones</li>
+                    </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Horarios</h5>
-                    <p>Lunes - Viernes 07:00a.m. - 06:00p.m.</p>
+                    <h2 class="h5 text-light mb-4">Horarios</h2>
+                    <p>Lunes – Viernes<br>07:00 a.m. – 06:00 p.m.</p>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Footer fin -->
+    </footer>
 
-
-    <!-- Copyright empieza -->
-    <div class="container-fluid py-4" style="background: #000000;">
+    <!-- Copyright -->
+    <div class="container-fluid py-4" style="background:#000;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom">2024 AGA Soluciones de ingeniería y tecnología S.A.S, Todos
-                        los derechos reservados.</a>
+                    <small>&copy; 2024 AGA Soluciones de Ingeniería y Tecnología S.A.S. Todos los derechos reservados.</small>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Copyright fin -->
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-            class="bi bi-arrow-up"></i></a>
+    <!-- Volver arriba -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" aria-label="Volver al inicio de la página">
+        <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </a>
 
+    <!-- ── Scripts (defer garantiza descarga paralela + ejecución ordenada) ── -->
+    <!--
+        ACCIÓN REQUERIDA: Descargar jQuery y Bootstrap JS localmente para
+        eliminar las dependencias de CDN externas:
+          jQuery 3.6.4  → https://jquery.com/download/  → lib/jquery/jquery.min.js
+          Bootstrap 5.3 → https://getbootstrap.com/     → lib/bootstrap/bootstrap.bundle.min.js
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="lib/wow/wow.min.js"               defer></script>
+    <script src="lib/easing/easing.min.js"         defer></script>
+    <script src="lib/waypoints/waypoints.min.js"   defer></script>
+    <script src="lib/counterup/counterup.min.js"   defer></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"  defer></script>
+    <script src="js/main.js"                        defer></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <!-- <script src="lib/lightbox/js/lightbox.min.js"></script> -->
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
 </body>
-
 </html>

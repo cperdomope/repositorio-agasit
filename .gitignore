@@ -1,0 +1,7 @@
+# Credenciales del servidor — nunca en el repositorio
+app_config.php
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
