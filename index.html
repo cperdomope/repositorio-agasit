@@ -16,12 +16,15 @@
     <meta property="og:url"         content="https://agasit.com/">
     <meta property="og:title"       content="AGA Soluciones IT | Seguridad Electrónica Profesional">
     <meta property="og:description" content="Soluciones de seguridad electrónica de vanguardia: CCTV, control de acceso, cercas eléctricas, alarmas y más. Bogotá, Colombia.">
-    <meta property="og:image"       content="https://agasit.com/img/carousel-1.jpg">
+    <meta property="og:image"       content="https://agasit.com/img/carousel/carousel-1.jpg">
     <meta property="og:locale"      content="es_CO">
     <meta property="og:site_name"   content="AGA Soluciones IT">
 
     <!-- ── Favicon ──────────────────────────────────────────────── -->
     <link rel="icon" type="image/png" href="/img/icon/logo-pestana.png">
+
+    <!-- ── Preload del recurso LCP (primer slide del carrusel) ──── -->
+    <link rel="preload" as="image" href="img/carousel/carousel-1.jpg" fetchpriority="high">
 
     <!-- ── Fuentes Google (preconnect antes del stylesheet) ─────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +55,35 @@
 
     <!-- ── Estilos propios ──────────────────────────────────────── -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css?v=20260713" rel="stylesheet">
+
+    <!-- ── Datos estructurados (SEO local) ───────────────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "AGA Soluciones de Ingeniería y Tecnología S.A.S.",
+      "url": "https://agasit.com/",
+      "logo": "https://agasit.com/img/icon/logo-pagina.png",
+      "image": "https://agasit.com/img/carousel/carousel-1.jpg",
+      "telephone": "+57 320 429 7664",
+      "email": "agasitsas@gmail.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CO"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "07:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/agasitsas"
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -79,48 +110,8 @@
         </div>
     </div>
 
-    <!-- ── Menú principal ───────────────────────────────────────── -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5"
-         aria-label="Menú principal">
-        <a href="index.html" class="navbar-brand d-flex align-items-center">
-            <img src="img/icon/logo-pagina.png" alt="AGA Soluciones IT" class="me-2 logo" width="160" height="60">
-        </a>
-        <button type="button"
-                class="navbar-toggler"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse"
-                aria-expanded="false"
-                aria-label="Abrir o cerrar el menú">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-4 py-lg-0">
-                <a href="index.html"     class="nav-item nav-link active" aria-current="page">Inicio</a>
-                <a href="acerca-de.html" class="nav-item nav-link">Acerca de nosotros</a>
-                <a href="servicios.html" class="nav-item nav-link">Servicios</a>
-                <a href="proyectos.html" class="nav-item nav-link">Proyectos</a>
-                <a href="contacto.html"  class="nav-item nav-link">Contacto</a>
-            </div>
-            <div class="d-lg-flex d-none align-items-center" aria-label="Redes sociales">
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2"
-                   href="https://www.facebook.com/agasitsas"
-                   target="_blank" rel="noopener noreferrer"
-                   aria-label="Facebook de AGA Soluciones IT">
-                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                </a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="#" aria-label="Twitter / X">
-                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-                </a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="#" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                </a>
-                <a class="btn btn-square rounded-circle bg-light text-primary me-0" href="#" aria-label="Instagram">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <!-- ── Menú principal (ver partials/navbar.html) ────────────── -->
+    <div id="navbar-placeholder"></div>
 
     <!-- ── Contenido principal ──────────────────────────────────── -->
     <main id="contenido-principal">
@@ -131,7 +122,7 @@
 
                 <div class="owl-carousel-item position-relative">
                     <img class="img-fluid"
-                         src="img/carousel-1.jpg"
+                         src="img/carousel/carousel-1.jpg"
                          alt="Sistema de seguridad electrónica instalado en edificio comercial"
                          width="1920" height="700">
                     <div class="carousel-inner">
@@ -153,7 +144,7 @@
 
                 <div class="owl-carousel-item position-relative">
                     <img class="img-fluid"
-                         src="img/carousel-2.jpg"
+                         src="img/carousel/carousel-2.jpg"
                          alt="Técnico configurando sistema de control de acceso vehicular"
                          loading="lazy"
                          width="1920" height="700">
@@ -177,7 +168,7 @@
 
                 <div class="owl-carousel-item position-relative">
                     <img class="img-fluid"
-                         src="img/carousel-3.jpg"
+                         src="img/carousel/carousel-3.jpg"
                          alt="Panel de detección de incendios y sistema de alarmas integrado"
                          loading="lazy"
                          width="1920" height="700">
@@ -204,71 +195,8 @@
 
     </main>
 
-    <!-- ── Footer ───────────────────────────────────────────────── -->
-    <footer class="container-fluid bg-dark text-secondary footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h2 class="h5 text-light mb-4">Contacto</h2>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3" aria-hidden="true"></i>320 429 76 64</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3" aria-hidden="true"></i>320 739 03 74</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3" aria-hidden="true"></i>agasitsas@gmail.com</p>
-                    <nav aria-label="Redes sociales AGA" class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="#" aria-label="Twitter / X">
-                            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2"
-                           href="https://www.facebook.com/agasitsas"
-                           target="_blank" rel="noopener noreferrer"
-                           aria-label="Facebook de AGA Soluciones IT">
-                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="#" aria-label="YouTube">
-                            <i class="fab fa-youtube" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="#" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                        </a>
-                    </nav>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h2 class="h5 text-light mb-4">Servicios</h2>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-1">Sistema CCTV</li>
-                        <li class="mb-1">Control de acceso peatonal</li>
-                        <li class="mb-1">Control de acceso vehicular</li>
-                        <li class="mb-1">Cercas eléctricas</li>
-                        <li class="mb-1">Intrusión y alarmas</li>
-                        <li class="mb-1">Detección de incendios</li>
-                        <li class="mb-1">Citofonía y videocitofonía</li>
-                        <li class="mb-1">Integración y automatización</li>
-                        <li class="mb-1">Mantenimiento eléctrico</li>
-                        <li class="mb-1">Comunicaciones</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h2 class="h5 text-light mb-4">Horarios</h2>
-                    <p>Lunes – Viernes<br>07:00 a.m. – 06:00 p.m.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Copyright -->
-    <div class="container-fluid py-4" style="background:#000;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <small>&copy; 2024 AGA Soluciones de Ingeniería y Tecnología S.A.S. Todos los derechos reservados.</small>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Volver arriba -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" aria-label="Volver al inicio de la página">
-        <i class="bi bi-arrow-up" aria-hidden="true"></i>
-    </a>
+    <!-- ── Footer (ver partials/footer.html) ─────────────────────── -->
+    <div id="footer-placeholder"></div>
 
     <!-- ── Scripts (defer garantiza descarga paralela + ejecución ordenada) ── -->
     <!--
@@ -279,13 +207,11 @@
     -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/partials.js?v=20260713"        defer></script>
     <script src="lib/wow/wow.min.js"               defer></script>
     <script src="lib/easing/easing.min.js"         defer></script>
-    <script src="lib/waypoints/waypoints.min.js"   defer></script>
-    <script src="lib/counterup/counterup.min.js"   defer></script>
     <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"  defer></script>
-    <script src="js/main.js"                        defer></script>
+    <script src="js/main.js?v=20260713"             defer></script>
 
 </body>
 </html>

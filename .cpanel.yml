@@ -18,9 +18,9 @@ deployment:
     - echo "Sincronizando bibliotecas..."
     - rsync -avz lib/ $DEPLOYPATH/lib/
 
-    # Sincronizar archivos SCSS (si es necesario en el servidor)
-    - echo "Sincronizando archivos SCSS..."
-    - rsync -avz scss/ $DEPLOYPATH/scss/
+    # Sincronizar partials (navbar/footer cargados vía fetch)
+    - echo "Sincronizando partials..."
+    - rsync -avz partials/ $DEPLOYPATH/partials/
 
     # Sincronizar archivos HTML
     - echo "Sincronizando archivos HTML..."

@@ -308,11 +308,11 @@ body {
 /* ============================================================
    CABECERAS DE PÁGINA INTERIOR (page-header)
    ============================================================ */
-.page-header  { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/carousel-4.jpg)    center/cover no-repeat; }
-.page-header1 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/carousel-2.jpg)    center/cover no-repeat; }
-.page-header2 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/pag-servicios.png) center/cover no-repeat; }
-.page-header3 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/pag-proyectos.jpg) center/cover no-repeat; }
-.page-header4 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/pag-contacto.jpg)  center/cover no-repeat; }
+.page-header  { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/carousel/carousel-4.jpg)    center/cover no-repeat; }
+.page-header1 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/carousel/carousel-2.jpg)    center/cover no-repeat; }
+.page-header2 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/paginas/pag-servicios.png) center/cover no-repeat; }
+.page-header3 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/paginas/pag-proyectos.jpg) center/cover no-repeat; }
+.page-header4 { background: linear-gradient(rgba(22,22,22,.1), rgba(12,26,150,.7)), url(../img/paginas/pag-contacto.jpg)  center/cover no-repeat; }
 
 .breadcrumb-item + .breadcrumb-item::before { color: var(--color-claro); }
 
@@ -341,6 +341,7 @@ body {
     max-height: 4.5em;
     line-height: 1.5em;
     position: relative;
+    transition: max-height var(--transicion-base);
 }
 .service-text::after {
     content: "...";
@@ -349,6 +350,15 @@ body {
     right: 0;
     padding-left: 1em;
     background: linear-gradient(to left, white, transparent);
+}
+/* Al expandir (JS añade esta clase), se quita el recorte y la elipsis falsa
+   para que el párrafo se lea completo y siga sin cortes en .more-text */
+.service-text.service-text--expanded {
+    overflow: visible;
+    max-height: none;
+}
+.service-text.service-text--expanded::after {
+    content: none;
 }
 .more-text { text-align: justify; }
 

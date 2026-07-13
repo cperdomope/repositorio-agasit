@@ -30,6 +30,7 @@ RewriteRule ^([^/]+)/?$ $1.html [L]
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
     # CSP — incluye los CDN externos actualmente en uso.
     # Cuando las librerías pasen a lib/ local, eliminar los dominios CDN de cada directiva.
@@ -63,3 +64,11 @@ RewriteRule ^([^/]+)/?$ $1.html [L]
     Order allow,deny
     Deny from all
 </FilesMatch>
+
+# ============================================================
+# Bloquear acceso directo a la librería vendorizada de PHPMailer
+# (send_email.php la incluye internamente; no necesita ser
+# accesible por URL, y exponerla facilita el fingerprinting
+# de versión).
+# ============================================================
+RewriteRule ^PHPMailer/ - [F,L]

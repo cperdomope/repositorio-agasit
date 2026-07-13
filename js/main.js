@@ -1,6 +1,8 @@
 (function ($) {
   "use strict";
 
+  var STICKY_SCROLL_THRESHOLD = 300;
+
   // Spinner
   var spinner = function () {
     setTimeout(function () {
@@ -14,32 +16,23 @@
   // Initiate the wowjs
   new WOW().init();
 
-  // Sticky Navbar
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-      $(".sticky-top").addClass("shadow-sm").css("top", "0px");
-    } else {
-      $(".sticky-top").removeClass("shadow-sm").css("top", "-100px");
-    }
-  });
-
-  // Back to top button
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
+  // Sticky navbar + back to top button (un solo listener de scroll)
+  $(window).on("scroll", function () {
+    var scrolled = $(this).scrollTop() > STICKY_SCROLL_THRESHOLD;
+    $(".sticky-top").toggleClass("shadow-sm", scrolled).css("top", scrolled ? "0px" : "-100px");
+    if (scrolled) {
       $(".back-to-top").fadeIn("slow");
     } else {
       $(".back-to-top").fadeOut("slow");
     }
   });
-  $(".back-to-top").click(function () {
+
+  // Delegado en document: el botón se inyecta de forma asíncrona
+  // desde partials/footer.html (ver js/partials.js), así que aún no
+  // existe en el DOM cuando este script se ejecuta.
+  $(document).on("click", ".back-to-top", function () {
     $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
     return false;
-  });
-
-  // Facts counter
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 2000,
   });
 
   // Header carousel
@@ -55,66 +48,34 @@
       '<i class="bi bi-chevron-right"></i>',
     ],
   });
-
-  // Testimonials carousel
-  $(".testimonial-carousel").owlCarousel({
-    autoplay: true,
-    smartSpeed: 1000,
-    loop: true,
-    nav: false,
-    dots: true,
-    items: 1,
-    dotsData: true,
-  });
-
-  // Portfolio isotope and filter
-  var portfolioIsotope = $(".portfolio-container").isotope({
-    itemSelector: ".portfolio-item",
-    layoutMode: "fitRows",
-  });
-  $("#portfolio-flters li").on("click", function () {
-    $("#portfolio-flters li").removeClass("active");
-    $(this).addClass("active");
-
-    portfolioIsotope.isotope({ filter: $(this).data("filter") });
-  });
 })(jQuery);
 
-// Carrusel de menú proyectos (Bootstrap)
-
+// Carrusel de menú de proyectos (Bootstrap): autoplay solo mientras el mouse está encima
 document.addEventListener("DOMContentLoaded", function () {
-  // Selecciona todos los carruseles en la página
   document.querySelectorAll(".carousel").forEach((carousel) => {
-    // Obtén la instancia del carrusel de Bootstrap
     const bootstrapCarousel = new bootstrap.Carousel(carousel);
 
-    // Al posicionar el ratón sobre el carrusel, inicia el desplazamiento automático
     carousel.addEventListener("mouseenter", () => {
-      bootstrapCarousel.cycle(); // Inicia el desplazamiento automático
+      bootstrapCarousel.cycle();
     });
 
-    // Al salir el ratón del carrusel, detiene el desplazamiento automático
     carousel.addEventListener("mouseleave", () => {
-      bootstrapCarousel.pause(); // Detiene el desplazamiento automático
+      bootstrapCarousel.pause();
     });
   });
 });
 
 // Filtrado de elementos de proyectos
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Selecciona los botones de filtro y los elementos
   const filterButtons = document.querySelectorAll(".botones-elementos button");
   const elements = document.querySelectorAll(".elemento");
 
-  // Función para mostrar todos los elementos
   const showAllElements = () => {
     elements.forEach((element) => {
       element.classList.add("show");
     });
   };
 
-  // Función para filtrar los elementos
   const filterElements = (category) => {
     elements.forEach((element) => {
       if (category === "todos" || element.dataset.elemento === category) {
@@ -125,73 +86,83 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
-  // Agrega un evento click a cada botón de filtro
   filterButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      // Remueve la clase active de todos los botones
       filterButtons.forEach((btn) => btn.classList.remove("active"));
-      // Agrega la clase active al botón clicado
       this.classList.add("active");
 
-      // Obtén la categoría del botón clicado
       const category = this.classList.contains("todos")
         ? "todos"
         : this.classList[0];
 
-      // Filtra los elementos basados en la categoría
       filterElements(category);
     });
   });
 
-  // Muestra todos los elementos al cargar la página
   showAllElements();
 });
 
-// Código nuevo para el carrusel del menú proyectos
-
-// Espera a que el documento esté completamente cargado
+// Botones "Leer más..."
+// El botón vive dentro de .service-item pero no depende de estar entre
+// .service-text y .more-text: así el texto se muestra siempre junto y el
+// botón no interrumpe la lectura.
 document.addEventListener("DOMContentLoaded", function () {
-  // Selecciona todos los carruseles en la página
-  document.querySelectorAll(".carousel").forEach((carousel) => {
-    // Obtén la instancia del carrusel de Bootstrap
-    const bootstrapCarousel = new bootstrap.Carousel(carousel);
+  document.querySelectorAll(".service-item").forEach((item) => {
+    const serviceText = item.querySelector(".service-text");
+    const moreText = item.querySelector(".more-text");
+    const button = item.querySelector(".btn.leer-mas");
+    if (!serviceText || !moreText || !button) return;
 
-    // Al posicionar el ratón sobre el carrusel, inicia el desplazamiento automático
-    carousel.addEventListener("mouseenter", () => {
-      bootstrapCarousel.cycle(); // Inicia el desplazamiento automático
-    });
-
-    // Al salir el ratón del carrusel, detiene el desplazamiento automático
-    carousel.addEventListener("mouseleave", () => {
-      bootstrapCarousel.pause(); // Detiene el desplazamiento automático
-    });
-  });
-});
-
-// Botones leeer mas...
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Ocultar el texto adicional y establecer el texto del botón
-  document.querySelectorAll(".more-text").forEach((moreText) => {
     moreText.style.display = "none";
-    const button = moreText.previousElementSibling;
     button.innerHTML =
       '<i class="fa fa-arrow-right text-white me-3"></i>Leer más...';
-  });
 
-  // Agregar el evento click al botón para mostrar/ocultar el texto adicional
-  document.querySelectorAll(".btn.leer-mas").forEach((button) => {
     button.addEventListener("click", function () {
-      const moreText = this.nextElementSibling;
-      if (moreText.style.display === "none" || moreText.style.display === "") {
+      const expandido = moreText.style.display === "block";
+
+      if (!expandido) {
+        serviceText.classList.add("service-text--expanded");
         moreText.style.display = "block";
-        this.innerHTML =
+        button.innerHTML =
           '<i class="fa fa-arrow-up text-white me-3"></i>Leer menos...';
       } else {
+        serviceText.classList.remove("service-text--expanded");
         moreText.style.display = "none";
-        this.innerHTML =
+        button.innerHTML =
           '<i class="fa fa-arrow-right text-white me-3"></i>Leer más...';
       }
     });
   });
+});
+
+// Mensaje de estado del formulario de contacto (tras el redirect desde send_email.php)
+document.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams(window.location.search);
+  const estado = params.has("enviado")
+    ? "exito"
+    : params.has("limite")
+    ? "limite"
+    : params.has("error")
+    ? "error"
+    : null;
+
+  if (!estado) return;
+
+  const errorMessage = document.getElementById("errorMessage");
+  const thankYouMessage = document.getElementById("thankYouMessage");
+  if (!errorMessage || !thankYouMessage) return;
+
+  const mensajesError = {
+    limite: "Demasiados intentos. Por favor espera una hora antes de enviar otro mensaje.",
+    error: "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo o escríbenos a agasitsas@gmail.com.",
+  };
+
+  const mensajeVisible = estado === "exito" ? thankYouMessage : errorMessage;
+  if (estado !== "exito") {
+    mensajeVisible.querySelector("p").textContent = mensajesError[estado];
+  }
+  mensajeVisible.style.display = "block";
+  mensajeVisible.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  history.replaceState(null, "", window.location.pathname);
 });

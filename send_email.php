@@ -13,14 +13,32 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('Método no permitido.');
 }
 
+// --- Verificación de origen (mitiga CSRF y envíos automatizados directos al endpoint) ---
+$origenHeader = $_SERVER['HTTP_ORIGIN'] ?? $_SERVER['HTTP_REFERER'] ?? '';
+$origenHost   = $origenHeader !== '' ? parse_url($origenHeader, PHP_URL_HOST) : null;
+if ($origenHost === null || strcasecmp($origenHost, $_SERVER['HTTP_HOST']) !== 0) {
+    http_response_code(403);
+    error_log('[AGA] Origen no permitido: ' . $origenHeader);
+    exit('Origen no permitido.');
+}
+
 // Cargar configuración desde fuera del document root
 $configPath = dirname(__DIR__) . '/app_config.php';
 if (!file_exists($configPath)) {
     http_response_code(500);
     error_log('[AGA] app_config.php no encontrado en: ' . $configPath);
-    exit('<p class="text-danger">Error de configuración del servidor. Contacte al administrador.</p>');
+    exit('Error de configuración del servidor. Contacte al administrador.');
 }
 $config = require $configPath;
+
+$claveConfigRequerida = ['smtp_host', 'smtp_user', 'smtp_pass', 'smtp_port', 'smtp_secure', 'mail_from', 'mail_from_name', 'mail_to'];
+foreach ($claveConfigRequerida as $clave) {
+    if (!isset($config[$clave]) || $config[$clave] === '') {
+        http_response_code(500);
+        error_log('[AGA] app_config.php incompleto: falta la clave "' . $clave . '"');
+        exit('Error de configuración del servidor. Contacte al administrador.');
+    }
+}
 
 // Cargar PHPMailer
 require 'PHPMailer/Exception.php';
@@ -40,21 +58,27 @@ $asunto   = $asunto   ? mb_substr(strip_tags($asunto),   0, 150)  : '';
 $mensaje  = $mensaje  ? mb_substr(strip_tags($mensaje),  0, 2000) : '';
 
 if (!$correo || $nombre === '' || $mensaje === '') {
-    http_response_code(400);
-    exit('<div class="alert alert-warning" role="alert">Por favor complete todos los campos requeridos con información válida.</div>');
+    header('Location: /contacto.html?error=1');
+    exit;
 }
 
-// --- Rate limiting simple (máx. 3 envíos por hora por sesión) ---
-session_start();
+// --- Rate limiting por IP en disco (máx. 3 envíos por hora) ---
+// No depende de cookies/sesión: a diferencia de un límite basado en $_SESSION,
+// no se evade simplemente descartando la cookie entre peticiones.
 $ahora = time();
-$_SESSION['contacto_intentos'] = array_values(array_filter(
-    $_SESSION['contacto_intentos'] ?? [],
-    static fn($t) => ($ahora - $t) < 3600
-));
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'desconocido';
+$rateLimitFile = sys_get_temp_dir() . '/aga_contacto_' . md5($ip) . '.json';
 
-if (count($_SESSION['contacto_intentos']) >= 3) {
+$intentos = [];
+if (is_readable($rateLimitFile)) {
+    $intentos = json_decode(file_get_contents($rateLimitFile), true) ?: [];
+}
+$intentos = array_values(array_filter($intentos, static fn($t) => ($ahora - $t) < 3600));
+
+if (count($intentos) >= 3) {
     http_response_code(429);
-    exit('<div class="alert alert-warning" role="alert">Demasiados intentos. Por favor espere una hora antes de enviar otro mensaje.</div>');
+    header('Location: /contacto.html?limite=1');
+    exit;
 }
 
 // --- Envío del correo ---
@@ -87,18 +111,14 @@ try {
 
     $mail->send();
 
-    $_SESSION['contacto_intentos'][] = $ahora;
+    $intentos[] = $ahora;
+    file_put_contents($rateLimitFile, json_encode($intentos), LOCK_EX);
 
-    echo '<div class="alert alert-success" role="alert">
-        <strong>¡Mensaje enviado con éxito!</strong> Gracias por contactarnos. Pronto nos comunicaremos contigo.
-        <br><a href="/" class="alert-link">Volver al inicio</a>
-    </div>';
+    header('Location: /contacto.html?enviado=1');
+    exit;
 
 } catch (Exception $e) {
     error_log('[AGA] Error PHPMailer: ' . $mail->ErrorInfo);
-    http_response_code(500);
-    echo '<div class="alert alert-danger" role="alert">
-        Ocurrió un error al enviar el mensaje. Por favor escríbanos directamente a
-        <strong>agasitsas@gmail.com</strong>.
-    </div>';
+    header('Location: /contacto.html?error=1');
+    exit;
 }
