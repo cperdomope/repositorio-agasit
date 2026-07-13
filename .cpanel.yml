@@ -10,9 +10,9 @@ deployment:
     - echo "Sincronizando archivos de imágenes..."
     - rsync -avz img/ $DEPLOYPATH/img/
 
-    # Sincronizar archivo JavaScript principal
-    - echo "Sincronizando archivo JavaScript principal..."
-    - rsync -avz main.js $DEPLOYPATH/
+    # Sincronizar carpeta JavaScript
+    - echo "Sincronizando archivos JavaScript..."
+    - rsync -avz js/ $DEPLOYPATH/js/
 
     # Sincronizar bibliotecas
     - echo "Sincronizando bibliotecas..."
@@ -25,6 +25,13 @@ deployment:
     # Sincronizar archivos HTML
     - echo "Sincronizando archivos HTML..."
     - rsync -avz *.html $DEPLOYPATH/
+
+    # Sincronizar backend del formulario de contacto
+    - echo "Sincronizando send_email.php..."
+    - rsync -avz send_email.php $DEPLOYPATH/
+
+    - echo "Sincronizando PHPMailer..."
+    - rsync -avz PHPMailer/ $DEPLOYPATH/PHPMailer/
 
     # Verificación de archivos sincronizados
     - echo "Verificación de archivos sincronizados"
